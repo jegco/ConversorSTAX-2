@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="estructura.xsl"?>
+<graph type="class-diagram">
+	<class name="ClaseA">
+		<attributes>
+			<attribute type="string" static="yes" value="Edgar" access="private" name="name"></attribute>
+			<attribute type="ClaseB" static="not" value="" access="private" name="instance"></attribute>
+		</attributes>
+		<methods>
+			<method name="getName" return="string" access="public"></method>
+			<method name="setName" return="void" access="public">
+				<parameters>
+					<parameter return="string" name="name"></parameter>
+				</parameters>
+			</method>
+		</methods>
+	</class>
+
+	<class name="ClaseB">
+		<attributes></attributes>
+		<methods></methods>
+	</class>
+
+	<class name="ClasePadre" abstract="yes">
+		<attributes></attributes>
+		<methods></methods>
+	</class>
+
+	<interface>
+		<attributes></attributes>
+		<methods></methods>
+	</interface>
+
+	<relation type="composite" id="ClaseA" to="ClaseB"></relation>
+	<relation type="generalization" id="ClaseB" to="ClasePadre"></relation>
+</graph>

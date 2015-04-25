@@ -1,0 +1,49 @@
+<XMI xmi.version="1.1" timestamp="2014-10-26 16:07:19" xmlns:UML="omg.org/UML1.3">
+<XMI.header>
+<XMI.documentation>
+<XMI.exporter>Enterprise Architect</XMI.exporter>
+<XMI.exporterVersion>2.5</XMI.exporterVersion>
+</XMI.documentation>
+</XMI.header>
+<header>class-diagram</header>
+<div>
+<span>ClaseA</span>
+<div>
+<span>name:
+							string</span>
+<br>
+<span>instance:
+							ClaseB</span>
+<br>
+</div>
+<div>
+<span>getName(
+							
+							)
+							:string</span>
+<br>
+<span>setName(
+							<span>name:
+									string</span>
+							)
+							:void</span>
+<br>
+</div>
+</div>
+<br>
+<br>
+<div>
+<span>ClaseB</span>
+<div></div>
+<div></div>
+</div>
+<br>
+<br>
+<div>
+<span>ClasePadre</span>
+<div></div>
+<div></div>
+</div>
+<br>
+<br>
+</XMI>
