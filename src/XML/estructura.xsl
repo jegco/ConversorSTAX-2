@@ -260,7 +260,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                                 </UML:ModelElement.taggedValue>
                                 </UML:Generalization>
                             </xsl:if>
-                            <!--COMPOSICION, COLOCA EL NOMBRE E ID DE LA SUBCLASE Y LA SUPER CLASE Y LA ID DE LA RELACION,
+                            <!--TERMINA GENERALIZACION Y COMIENZO EL IF DE COMPOSICION, COLOCA EL NOMBRE E ID DE LA SUBCLASE Y LA SUPER CLASE Y LA ID DE LA RELACION,
                             MAS DATOS DEL ESTILO DE LA LINEA ENTRE OTRAS COSAS, SU DIFERENCIA CON LA AGREGACION ES..... -->
                             <xsl:if test="@r_type='composite'">
                                 <UML:Association visibility="public" isRoot="false" isLeaf="false" isAbstract="false">
@@ -326,17 +326,27 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                                             </UML:AssociationEnd>
                                     </UML:Association.connection>
                                 </UML:Association>
+                                <!--TERMINA EL IF DE COMPOSICION-->
                             </xsl:if>
+                            <!--TERMINA EL IF DE QUE SI LA ID DE LA CLASE ES IGUAL AL DE LA SUBCLASE EN LA RELACION-->  
                         </xsl:if>
+                        <!--TERMINA CICLO FOR-EACH DE LAS RELACIONES-->
                     </xsl:for-each>
+                    <!--TERMINA CICLO FOR-EACH DE LAS CLASES-->
                     </xsl:for-each>
+                    <!--TERMINA CICLO FOR-EACH DE LOS DISTINTOS DIAGRAMAS(SOLO ESTA IMPLEMENTADO LA CONVERSION DE CLASES, 
+                    MAS ADELANTE SE HARA EL DE LOS DEMAS DIAGRAMAS)-->
                     </xsl:for-each>
-                    </UML:Namespace.ownedElement> 
+                    </UML:Namespace.ownedElement>
+                    <!--CULMINA EL PAQUETE -->
                     </UML:Package>
+                    <!--TERMINA CICLO FOR-EACH DE LOS PAQUETES-->
             </xsl:for-each>
+            <!--CULMINA CONTENIDO XMI -->
         </XMI.content>
-        
-</XMI>	
+        <!--CIERRA XMI -->
+</XMI>
+<!--CIERRA EL TEMPLATE -->	
 </xsl:template>
-
+<!--TERMINA EL XSL -->
 </xsl:stylesheet>
