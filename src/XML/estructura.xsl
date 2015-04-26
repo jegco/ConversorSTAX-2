@@ -196,14 +196,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                         <!--TERMINA LA SECCION DE LOS METODOS Y PROSIGUE A TERMINAR CON LA CLASE-->
                     </UML:Classifier.feature>
                     </UML:Class>
+                    
                     <!--AQUI TERMINA LA CLASE Y EMPIEZAN LAS RELACIONES, AUN
                     NO SE CIERRA EL CICLO QUE LEE LAS CLASES PARA SEGUIR UN ORDEN EN LOS DATOS CUANDO SE 
                     PONGAN LAS RELACIONES, LAS RELACIONES SE COLOCAN DEBAJO DE LA SUBCLASE(DE LA QUE SALE LA RELACION) -->
-                    <xsl:for-each select="relation">
+                    <xsl:for-each select="relations/relation">
                         <!--LEE LAS RELACIONES, COLOCA LA SUBCLASE(DE DONDE SALE) Y LA SUPERCLASE(A DONDE LLEGA)
                         (EJ:HIJO[SUBCLASE],PADRE[SUPERCLASE]), ESTO DEPENDERA DE EL TIPO DE RELACION YA QUE CADA
                         UNA TIENE UNAS CARACTERISTICAS DISTINTAS(DEPENDE DE LA RELACION CAMBIAN ATRIBUTOS EN LAS ETIQUETAS)-->
-                        <xsl:if test="@c_id=@r_from">
+      
+                            <nombre value="entro if"/>
                             <!--GENERALIZACION, COLOCA EL NOMBRE E ID DE LA SUBCLASE Y LA SUPER CLASE Y LA ID DE LA RELACION,
                             MAS DATOS DEL ESTILO DE LA LINEA ENTRE OTRAS COSAS-->
                             <xsl:if test="@r_type='generalization'">
@@ -328,8 +330,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                                 </UML:Association>
                                 <!--TERMINA EL IF DE COMPOSICION-->
                             </xsl:if>
-                            <!--TERMINA EL IF DE QUE SI LA ID DE LA CLASE ES IGUAL AL DE LA SUBCLASE EN LA RELACION-->  
-                        </xsl:if>
+                            
                         <!--TERMINA CICLO FOR-EACH DE LAS RELACIONES-->
                     </xsl:for-each>
                     <!--TERMINA CICLO FOR-EACH DE LAS CLASES-->
