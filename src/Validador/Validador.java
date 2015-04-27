@@ -26,9 +26,9 @@ import org.xml.sax.SAXParseException;
  * @author j
  */
 public class Validador {
-
+    /*atributos del validador, las rutas del archivo a validar y el esquema xsd */
     
-    private Source gxllFile;
+    private Source xmlFile;
     private Source schemaFile;
 
     public Validador() {
@@ -36,13 +36,15 @@ public class Validador {
     }
 
     public String validar(String gxlFile) throws SAXException {
-        this.gxllFile = new StreamSource(new File(gxlFile));
+        //busca la ruta del archivo a validar y lo instancia
+        this.xmlFile = new StreamSource(new File(gxlFile));
         String resultado = "";
+        //instancia el esquema xsd
         SchemaFactory factoriaDeEsquemas = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         Schema esquema = factoriaDeEsquemas.newSchema(schemaFile);
-
+        //instancia el validador de xml
         Validator validador = esquema.newValidator();
-        
+        //lista para guardar los posibles errores en la validacion
         ArrayList<Exception> errores=new ArrayList<>();
         
         validador.setErrorHandler(
@@ -66,13 +68,15 @@ public class Validador {
         );
         
         try {
-            validador.validate(gxllFile);
+            //valida el xml
+            validador.validate(xmlFile);
         } catch (IOException ex) {
             Logger.getLogger(Validador.class.getName()).log(Level.SEVERE, null, ex);
         }
+        //muestra el resultado dependiendo de la validacion
         if(errores.isEmpty()) resultado="XML valido";
         else resultado="Archivo invalido";
-        
+        //devuelve un string con el resultado
         return resultado;
     }
     
