@@ -30,9 +30,16 @@ public class Validador implements IAnalyzable{
     
     private Source archivoXML;
     private Source esquemaXSL;
+    private static Validador instancia=null;
+    
 
-    public Validador() {
+    private Validador() {
         this.esquemaXSL = new StreamSource(new File("src\\XML\\XML.xsd"));
+    }
+    
+    public static Validador getInstance(){
+        if(instancia==null) instancia=new Validador();
+        return instancia;
     }
 
     @Override

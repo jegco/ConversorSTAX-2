@@ -14,7 +14,7 @@ import controller.ControladorGuardar;
 import controller.ControladorCapturaArchivo;
 import Transformador.Conversor;
 import controller.ControladorVisualizar;
-import controller.ControladorCorvertir;
+import controller.ControladorConvertir;
 import javax.swing.UnsupportedLookAndFeelException;
 /**
  *
@@ -196,14 +196,14 @@ public class MainView extends javax.swing.JFrame {
         en caso, contrario notificarle al usuario*/
         jProgressBar1.setEnabled(true);
         btnCancel.setEnabled(true);
-        ControladorCorvertir.accion(Conversor.getInstancia(), this);
+        ControladorConvertir.accion(Conversor.getInstancia());
         jTextArea1.setText(ControladorVisualizar.accionArchivoEntrada(Conversor.getInstancia()));
         jTextArea2.setText(ControladorVisualizar.accionArchivoSalida(Conversor.getInstancia()));
     }//GEN-LAST:event_btnStartTrasnformActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        ControladorGuardar.action(Conversor.getInstancia(), this);
+        ControladorGuardar.accion(Conversor.getInstancia(), this);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

@@ -22,7 +22,7 @@ import views.MainView;
  */
 public class ControladorGuardar {
     
-    public static void action(Conversor tf, MainView mv){
+    public static void accion(Conversor tf, MainView mv){
         JFileChooser buscador = new JFileChooser();
         FileNameExtensionFilter filtroArchivo =new FileNameExtensionFilter("XMI","xmi"); //Se declaran los filtros para el archivo
         buscador.setFileFilter(filtroArchivo); //Se agregan los filtros al JFileChooser
