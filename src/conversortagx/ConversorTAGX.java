@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.xml.transform.TransformerException;
 import org.xml.sax.SAXException;
+import views.MainView;
 
 /**
  *
@@ -25,14 +26,14 @@ public class ConversorTAGX {
      */
     public static void main(String[] args) {
         
-        Conversor conversor=Conversor.getInstancia();
-        
-        try {
-            conversor.convertir("", "");
-        } catch (TransformerException ex) {
-            Logger.getLogger(ConversorTAGX.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+//        Conversor conversor=Conversor.getInstancia();
+//        
+//        try {
+//            conversor.convertir("", "");
+//        } catch (TransformerException ex) {
+//            Logger.getLogger(ConversorTAGX.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+         new MainView().setVisible(true);
     }
     
 }

@@ -25,7 +25,7 @@ import org.xml.sax.SAXParseException;
  *
  * @author j
  */
-public class Validador {
+public class Validador implements IAnalyzable{
     /*atributos del validador, las rutas del archivo a validar y el esquema xsd */
     
     private Source xmlFile;
@@ -35,6 +35,7 @@ public class Validador {
         this.schemaFile = new StreamSource(new File("src\\XML\\XML.xsd"));
     }
 
+    @Override
     public String validar(String gxlFile) throws SAXException {
         //busca la ruta del archivo a validar y lo instancia
         this.xmlFile = new StreamSource(new File(gxlFile));

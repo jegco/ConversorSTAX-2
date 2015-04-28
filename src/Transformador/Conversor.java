@@ -28,8 +28,8 @@ public class Conversor {
 
     private Conversor() {
         this.inputFile = "";
-        this.outputFile = "";
-        
+        this.outputFile = "src\\XML\\estructura.xmi";
+        schema="src\\XML\\estructura.xsl";
     }
 
     public static Conversor getInstancia() {
@@ -66,17 +66,17 @@ public class Conversor {
         this.schema = schema;
     }
     //metodo conversor puede arrojar excepciones de configuracion del transformador(error en el xsl) o del xml como tal
-    public void convertir(String inputFile, String outputFile)throws TransformerConfigurationException,
+    public void convertir()throws TransformerConfigurationException,
     TransformerException
     {
         TransformerFactory factory = TransformerFactory.newInstance();
         //la ruta del xsl
-        StreamSource xslStream = new StreamSource("src\\XML\\estructura.xsl");
+        StreamSource xslStream = new StreamSource(schema);
         //instancia el transformador con la instancia del xsl
         Transformer transformer = factory.newTransformer(xslStream);
         //rutas de los datos de entrada y salida
-        StreamSource in = new StreamSource("src\\XML\\estructura.xml");
-        StreamResult out = new StreamResult("src\\XML\\estructura.xmi");
+        StreamSource in = new StreamSource(inputFile);
+        StreamResult out = new StreamResult(outputFile);
         //llamada para transformar el archivo xml a xmi
         transformer.transform(in, out);
         System.out.println("se genero el xmi correctamente y se guardo en la carpeta: " + outputFile);
