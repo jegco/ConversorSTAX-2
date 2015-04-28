@@ -16,13 +16,13 @@ import views.MainView;
  *
  * @author Edgar
  */
-public class TransformController {
+public class ControladorCorvertir {
     
-    public static void action(Conversor tf, MainView mv){
+    public static void accion(Conversor tf, MainView mv){
         try {
             Conversor.getInstancia().convertir();
         } catch (TransformerException ex) {
-            Logger.getLogger(TransformController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControladorCorvertir.class.getName()).log(Level.SEVERE, null, ex);
         }
 //        mv.update(tf);
     }

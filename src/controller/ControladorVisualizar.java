@@ -16,13 +16,13 @@ import java.io.IOException;
  *
  * @author j
  */
-public class DisplayFilesController {
+public class ControladorVisualizar {
       private static File archivo = null;
       private static FileReader fr = null;
       private static BufferedReader br = null;
       private static String file="";
  
-      public static String actionInputFile(Conversor tf){
+      public static String accionArchivoEntrada(Conversor tf){
       try {
          // Apertura del fichero y creacion de BufferedReader para poder
          // hacer una lectura comoda (disponer del metodo readLine()).
@@ -52,7 +52,7 @@ public class DisplayFilesController {
       }
         return file;
       }
-      public static String actionOutputFile(Conversor tf){
+      public static String accionArchivoSalida(Conversor tf){
       try {
          // Apertura del fichero y creacion de BufferedReader para poder
          // hacer una lectura comoda (disponer del metodo readLine()).

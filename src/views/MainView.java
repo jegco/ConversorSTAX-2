@@ -10,11 +10,11 @@ package views;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
-import controller.SaveController;
-import controller.UploadFileController;
+import controller.ControladorGuardar;
+import controller.ControladorCapturaArchivo;
 import Transformador.Conversor;
-import controller.DisplayFilesController;
-import controller.TransformController;
+import controller.ControladorVisualizar;
+import controller.ControladorCorvertir;
 import javax.swing.UnsupportedLookAndFeelException;
 /**
  *
@@ -185,8 +185,8 @@ public class MainView extends javax.swing.JFrame {
 
     private void btnUploadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadFileActionPerformed
         /*Botón de subir el archivo a transformar*/
-        UploadFileController.action(this);
-        jTextArea1.setText(DisplayFilesController.actionInputFile(Conversor.getInstancia()));
+        ControladorCapturaArchivo.accion(this);
+        jTextArea1.setText(ControladorVisualizar.accionArchivoEntrada(Conversor.getInstancia()));
         //Se debe verificar si es compatible o no y colocarlo en la casilla de verificacion
     }//GEN-LAST:event_btnUploadFileActionPerformed
 
@@ -196,14 +196,14 @@ public class MainView extends javax.swing.JFrame {
         en caso, contrario notificarle al usuario*/
         jProgressBar1.setEnabled(true);
         btnCancel.setEnabled(true);
-        TransformController.action(Conversor.getInstancia(), this);
-        jTextArea1.setText(DisplayFilesController.actionInputFile(Conversor.getInstancia()));
-        jTextArea2.setText(DisplayFilesController.actionOutputFile(Conversor.getInstancia()));
+        ControladorCorvertir.accion(Conversor.getInstancia(), this);
+        jTextArea1.setText(ControladorVisualizar.accionArchivoEntrada(Conversor.getInstancia()));
+        jTextArea2.setText(ControladorVisualizar.accionArchivoSalida(Conversor.getInstancia()));
     }//GEN-LAST:event_btnStartTrasnformActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        SaveController.action(Conversor.getInstancia(), this);
+        ControladorGuardar.action(Conversor.getInstancia(), this);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

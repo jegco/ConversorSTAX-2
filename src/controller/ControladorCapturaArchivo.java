@@ -16,16 +16,16 @@ import views.MainView;
  *
  * @author Edgar
  */
-public class UploadFileController {
+public class ControladorCapturaArchivo {
    
     
-    public static void action(MainView mv){
-        JFileChooser browser = new JFileChooser();
-        FileNameExtensionFilter filtroFile =new FileNameExtensionFilter("XML","xml"); //Se declaran los filtros para el archivo
-        browser.setFileFilter(filtroFile); //Se agregan los filtros al JFileChooser
-        int option = browser.showOpenDialog(mv);
-        if(option == JFileChooser.APPROVE_OPTION){
-            String xmlfile=browser.getSelectedFile().getAbsolutePath();
+    public static void accion(MainView mv){
+        JFileChooser buscador = new JFileChooser();
+        FileNameExtensionFilter filtroArchivo =new FileNameExtensionFilter("XML","xml"); //Se declaran los filtros para el archivo
+        buscador.setFileFilter(filtroArchivo); //Se agregan los filtros al JFileChooser
+        int opcion = buscador.showOpenDialog(mv);
+        if(opcion == JFileChooser.APPROVE_OPTION){
+            String xmlfile=buscador.getSelectedFile().getAbsolutePath();
             Conversor.getInstancia().setInputFile(xmlfile);
         }
         

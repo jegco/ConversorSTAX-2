@@ -28,21 +28,21 @@ import org.xml.sax.SAXParseException;
 public class Validador implements IAnalyzable{
     /*atributos del validador, las rutas del archivo a validar y el esquema xsd */
     
-    private Source xmlFile;
-    private Source schemaFile;
+    private Source archivoXML;
+    private Source esquemaXSL;
 
     public Validador() {
-        this.schemaFile = new StreamSource(new File("src\\XML\\XML.xsd"));
+        this.esquemaXSL = new StreamSource(new File("src\\XML\\XML.xsd"));
     }
 
     @Override
     public String validar(String gxlFile) throws SAXException {
         //busca la ruta del archivo a validar y lo instancia
-        this.xmlFile = new StreamSource(new File(gxlFile));
+        this.archivoXML = new StreamSource(new File(gxlFile));
         String resultado = "";
         //instancia el esquema xsd
         SchemaFactory factoriaDeEsquemas = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        Schema esquema = factoriaDeEsquemas.newSchema(schemaFile);
+        Schema esquema = factoriaDeEsquemas.newSchema(esquemaXSL);
         //instancia el validador de xml
         Validator validador = esquema.newValidator();
         //lista para guardar los posibles errores en la validacion
@@ -70,7 +70,7 @@ public class Validador implements IAnalyzable{
         
         try {
             //valida el xml
-            validador.validate(xmlFile);
+            validador.validate(archivoXML);
         } catch (IOException ex) {
             Logger.getLogger(Validador.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -21,15 +21,15 @@ import javax.xml.transform.stream.StreamSource;
 public class Conversor {
     /*atributos, la ruta del archivo de entrada, la ruta de donde lo vas a guardar, el 
     el esquema(xsl) para hacer la conversion y el singleton para la unica instancia*/
-    private String inputFile;
-    private String outputFile;
-    private String schema;
+    private String ArchivoEntrada;
+    private String archivoSalida;
+    private String esquemaXSL;
     private static Conversor instancia=null;
 
     private Conversor() {
-        this.inputFile = "";
-        this.outputFile = "src\\XML\\estructura.xmi";
-        schema="src\\XML\\estructura.xsl";
+        this.ArchivoEntrada = "";
+        this.archivoSalida = "src\\XML\\estructura.xmi";
+        esquemaXSL="src\\XML\\estructura.xsl";
     }
 
     public static Conversor getInstancia() {
@@ -43,43 +43,43 @@ public class Conversor {
     
 
     public String getInputFile() {
-        return inputFile;
+        return ArchivoEntrada;
     }
 
     public void setInputFile(String inputFile) {
-        this.inputFile = inputFile;
+        this.ArchivoEntrada = inputFile;
     }
 
     public String getOutputFile() {
-        return outputFile;
+        return archivoSalida;
     }
 
     public void setOutputFile(String outputFile) {
-        this.outputFile = outputFile;
+        this.archivoSalida = outputFile;
     }
 
     public String getSchema() {
-        return schema;
+        return esquemaXSL;
     }
 
     public void setSchema(String schema) {
-        this.schema = schema;
+        this.esquemaXSL = schema;
     }
     //metodo conversor puede arrojar excepciones de configuracion del transformador(error en el xsl) o del xml como tal
     public void convertir()throws TransformerConfigurationException,
     TransformerException
     {
-        TransformerFactory factory = TransformerFactory.newInstance();
+        TransformerFactory factoria = TransformerFactory.newInstance();
         //la ruta del xsl
-        StreamSource xslStream = new StreamSource(schema);
+        StreamSource xslStream = new StreamSource(esquemaXSL);
         //instancia el transformador con la instancia del xsl
-        Transformer transformer = factory.newTransformer(xslStream);
+        Transformer transformador = factoria.newTransformer(xslStream);
         //rutas de los datos de entrada y salida
-        StreamSource in = new StreamSource(inputFile);
-        StreamResult out = new StreamResult(outputFile);
+        StreamSource entrada = new StreamSource(ArchivoEntrada);
+        StreamResult salida = new StreamResult(archivoSalida);
         //llamada para transformar el archivo xml a xmi
-        transformer.transform(in, out);
-        System.out.println("se genero el xmi correctamente y se guardo en la carpeta: " + outputFile);
+        transformador.transform(entrada, salida);
+        System.out.println("se genero el xmi correctamente y se guardo en la carpeta: " + archivoSalida);
     }
     
 }

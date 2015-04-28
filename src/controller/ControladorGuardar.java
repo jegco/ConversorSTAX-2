@@ -20,19 +20,19 @@ import views.MainView;
  *
  * @author Edgar
  */
-public class SaveController {
+public class ControladorGuardar {
     
     public static void action(Conversor tf, MainView mv){
-        JFileChooser browser = new JFileChooser();
-        FileNameExtensionFilter filtroFile =new FileNameExtensionFilter("XMI","xmi"); //Se declaran los filtros para el archivo
-        browser.setFileFilter(filtroFile); //Se agregan los filtros al JFileChooser
-        browser.setFileSelectionMode(JFileChooser.FILES_ONLY); 
-        browser.setSelectedFile(new File("NuevoArchivoXMI.xmi")); //Nombre por defecto del archivo a guardar
-        int option = browser.showSaveDialog(mv);
-        if(option == JFileChooser.APPROVE_OPTION){
+        JFileChooser buscador = new JFileChooser();
+        FileNameExtensionFilter filtroArchivo =new FileNameExtensionFilter("XMI","xmi"); //Se declaran los filtros para el archivo
+        buscador.setFileFilter(filtroArchivo); //Se agregan los filtros al JFileChooser
+        buscador.setFileSelectionMode(JFileChooser.FILES_ONLY); 
+        buscador.setSelectedFile(new File("NuevoArchivoXMI.xmi")); //Nombre por defecto del archivo a guardar
+        int opcion = buscador.showSaveDialog(mv);
+        if(opcion == JFileChooser.APPROVE_OPTION){
             /*Script para guardar el archivo*/
             try{
-                File archivo = new File(browser.getSelectedFile().getAbsolutePath());
+                File archivo = new File(buscador.getSelectedFile().getAbsolutePath());
                 File origen=new File(tf.getOutputFile());
                 BufferedWriter bw;
                 if(archivo.exists()) {
@@ -41,14 +41,14 @@ public class SaveController {
                     bw = new BufferedWriter(new FileWriter(archivo));
                 }
                 bw.close();
-                FileInputStream in = new FileInputStream(origen); //Hay que manejar la excepcion
-                FileOutputStream out = new FileOutputStream(archivo);
+                FileInputStream entrada = new FileInputStream(origen); //Hay que manejar la excepcion
+                FileOutputStream salida = new FileOutputStream(archivo);
                 int c;
-                while( (c = in.read() ) != -1)
-                    out.write(c);
+                while( (c = entrada.read() ) != -1)
+                    salida.write(c);
                 
-                in.close();
-                out.close();
+                entrada.close();
+                salida.close();
                 origen.delete();
             }catch(IOException e) {
                 System.err.println("Hubo un error de entrada/salida!!!");
